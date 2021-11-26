@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:24:50
- * @LastEditTime: 2021-11-27 00:05:32
+ * @LastEditTime: 2021-11-27 00:37:04
  * @LastEditors: Lee
  * @Description:
  * @FilePath: \vite-vue-template__H5\src\router\index.ts
@@ -78,38 +78,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('pages/GoldCoinDetails/index.vue'),
     meta: {
       title: '金币明细',
-    },
-  },
-  {
-    path: '/wallet',
-    name: 'wallet',
-    component: () => import('pages/Wallet/index.vue'),
-    meta: {
-      title: '我的钱包',
-    },
-  },
-  {
-    path: '/wallet-withdraw',
-    name: 'wallet-withdraw',
-    component: () => import('pages/WalletWithdraw/index.vue'),
-    meta: {
-      title: '钱包提现',
-    },
-  },
-  {
-    path: '/wallet-estimated-account',
-    name: 'wallet-estimated-account',
-    component: () => import('pages/WalletEstimatedAccount/index.vue'),
-    meta: {
-      title: '预估到账',
-    },
-  },
-  {
-    path: '/wallet-accumulated-income',
-    name: 'wallet-accumulated-income',
-    component: () => import('pages/WalletAccumulatedIncome/index.vue'),
-    meta: {
-      title: '累计收入',
     },
   },
 
