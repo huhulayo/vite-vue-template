@@ -2,18 +2,20 @@
  * @Author: Lee
  * @Date: 2021-11-03 11:42:58
  * @LastEditors: Lee
- * @LastEditTime: 2021-11-09 10:09:29
+ * @LastEditTime: 2021-11-27 10:18:07
 -->
 <template>
-  <div class="page">
+  <div :class="['page', pageCls]">
     <!-- 渐变层 -->
     <div class="gradient"></div>
     <!-- 导航栏 -->
     <app-header
+      v-if="env !== 'weixin'"
       title="金币明细"
       theme="light"
       backgroundColor="transparent"
       :showBack="true"
+      :show-status-bar="false"
     />
     <!-- 内容 -->
     <div class="contents">
@@ -48,74 +50,71 @@
           </div>
         </van-tab>
         <van-tab title="好友贡献">
-          <div class="wrap">
-            <van-pull-refresh
-              v-model="contributionTab.isRefreshing"
-              @refresh="onRefresh('contributionTab')"
-            >
-              <template v-if="contributionTab.data">
-                <van-list
-                  v-model:loading="contributionTab.isLoading"
-                  finished-text="没有更多了~"
-                  :finished="contributionTab.isFinished"
-                  :offset="50"
-                  :immediate-check="false"
-                  @load="onLoad('contributionTab')"
-                >
-                  <template v-if="contributionTab.data.length > 0">
-                    <Item
-                      v-for="(item, index) in contributionTab.data"
-                      :key="index"
-                      :data="item"
-                    />
-                  </template>
-                  <no-data tips="没有更多啦~" v-else />
-                </van-list>
-              </template>
-              <van-loading v-else vertical>加载中...</van-loading>
-            </van-pull-refresh>
-          </div>
+          <van-pull-refresh
+            v-model="contributionTab.isRefreshing"
+            @refresh="onRefresh('contributionTab')"
+          >
+            <template v-if="contributionTab.data">
+              <van-list
+                v-model:loading="contributionTab.isLoading"
+                finished-text="没有更多了~"
+                :finished="contributionTab.isFinished"
+                :offset="50"
+                :immediate-check="false"
+                @load="onLoad('contributionTab')"
+              >
+                <template v-if="contributionTab.data.length > 0">
+                  <Item
+                    v-for="(item, index) in contributionTab.data"
+                    :key="index"
+                    :data="item"
+                  />
+                </template>
+                <no-data tips="没有更多啦~" v-else />
+              </van-list>
+            </template>
+            <van-loading v-else vertical>加载中...</van-loading>
+          </van-pull-refresh>
         </van-tab>
         <van-tab title="金币支出">
-          <div class="wrap">
-            <van-pull-refresh
-              v-model="spendingTab.isRefreshing"
-              @refresh="onRefresh('spendingTab')"
-            >
-              <template v-if="spendingTab.data">
-                <van-list
-                  v-model:loading="spendingTab.isLoading"
-                  finished-text="没有更多了~"
-                  :finished="spendingTab.isFinished"
-                  :offset="50"
-                  :immediate-check="false"
-                  @load="onLoad('spendingTab')"
-                >
-                  <template v-if="spendingTab.data.length > 0">
-                    <Item
-                      v-for="(item, index) in spendingTab.data"
-                      :key="index"
-                      :data="item"
-                    />
-                  </template>
-                  <no-data tips="没有更多啦~" v-else />
-                </van-list>
-              </template>
-              <van-loading v-else vertical>加载中...</van-loading>
-            </van-pull-refresh>
-          </div>
+          <van-pull-refresh
+            v-model="spendingTab.isRefreshing"
+            @refresh="onRefresh('spendingTab')"
+          >
+            <template v-if="spendingTab.data">
+              <van-list
+                v-model:loading="spendingTab.isLoading"
+                finished-text="没有更多了~"
+                :finished="spendingTab.isFinished"
+                :offset="50"
+                :immediate-check="false"
+                @load="onLoad('spendingTab')"
+              >
+                <template v-if="spendingTab.data.length > 0">
+                  <Item
+                    v-for="(item, index) in spendingTab.data"
+                    :key="index"
+                    :data="item"
+                  />
+                </template>
+                <no-data tips="没有更多啦~" v-else />
+              </van-list>
+            </template>
+            <van-loading v-else vertical>加载中...</van-loading>
+          </van-pull-refresh>
         </van-tab>
       </van-tabs>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs, watchEffect } from "vue";
-import AppHeader from "comps/@lgs/AppHeader/AppHeader.vue";
-import NoData from "comps/@lgs/NoData/NoData.vue";
-import Item from "comps/ListItem.vue";
-import api from "@/api";
+<script setup lang="ts">
+import { reactive, toRefs, watchEffect } from 'vue';
+import AppHeader from 'comps/@lgs/AppHeader/AppHeader.vue';
+import NoData from 'comps/@lgs/NoData/NoData.vue';
+import Item from 'comps/ListItem.vue';
+import api from '@/api';
+import Tools from 'lg-tools';
 
 interface TabProps extends GD.ListProps<any[] | null> {
   queryType: number; // 查询类型 1-金币收入 2-好友贡献 3-金币支出
@@ -126,107 +125,103 @@ interface StateProps {
   spendingTab: TabProps;
   contributionTab: TabProps;
 }
-type TabKeyType = "incomeTab" | "spendingTab" | "contributionTab";
+type TabKeyType = 'incomeTab' | 'spendingTab' | 'contributionTab';
 
-export default defineComponent({
-  components: {
-    AppHeader,
-    NoData,
-    Item,
+// state
+const state = reactive<StateProps>({
+  active: 0,
+  incomeTab: {
+    page: 1,
+    data: null,
+    isRefreshing: false,
+    isLoading: false,
+    isFinished: false,
+    type: 'refresh',
+    queryType: 1,
   },
-  setup() {
-    // state
-    const state = reactive<StateProps>({
-      active: 0,
-      incomeTab: {
-        page: 1,
-        data: null,
-        isRefreshing: false,
-        isLoading: false,
-        isFinished: false,
-        type: "refresh",
-        queryType: 1,
-      },
-      spendingTab: {
-        page: 1,
-        data: null,
-        isRefreshing: false,
-        isLoading: false,
-        isFinished: false,
-        type: "refresh",
-        queryType: 1,
-      },
-      contributionTab: {
-        page: 1,
-        data: null,
-        isRefreshing: false,
-        isLoading: false,
-        isFinished: false,
-        type: "refresh",
-        queryType: 1,
-      },
-    });
-    // methods
-    const getDataSource = (key: TabKeyType) => {
-      api.test
-        .goldCoins<GD.BaseResponse<GD.ListItemProps[]>>({
-          page: state[key].page,
-          pageSize: 20,
-        })
-        .then((res) => {
-          if (res && res.code === 0) {
-            const { pageNo, pages } = res.page;
-            // 处理数据
-            if (state[key].type === "refresh" || state[key].data === null) {
-              state[key].data = res.data;
-              state[key].isRefreshing = false;
-            } else {
-              state[key].data = [...state[key].data!, ...res.data];
-              state[key].isLoading = false;
-            }
-            state[key].isFinished = pageNo >= pages;
-          }
-        });
-    };
-    // watchEffects
-    watchEffect(() => {
-      switch (state.active) {
-        case 0:
-          state["incomeTab"].data === null && getDataSource("incomeTab");
-          break;
-        case 1:
-          state["contributionTab"].data === null &&
-            getDataSource("contributionTab");
-          break;
-        case 2:
-          state["spendingTab"].data === null && getDataSource("spendingTab");
-          break;
-      }
-    });
-    // events
-    const onRefresh = (key: TabKeyType) => {
-      state[key].page = 1;
-      state[key].type = "refresh";
-      setTimeout(() => {
-        getDataSource(key);
-      }, 1000);
-    };
-    const onLoad = (key: TabKeyType) => {
-      state[key].page += 1;
-      state[key].type = "load";
-      setTimeout(() => {
-        getDataSource(key);
-      }, 1000);
-    };
-    return {
-      ...toRefs(state),
-      onRefresh,
-      onLoad,
-    };
+  spendingTab: {
+    page: 1,
+    data: null,
+    isRefreshing: false,
+    isLoading: false,
+    isFinished: false,
+    type: 'refresh',
+    queryType: 1,
+  },
+  contributionTab: {
+    page: 1,
+    data: null,
+    isRefreshing: false,
+    isLoading: false,
+    isFinished: false,
+    type: 'refresh',
+    queryType: 1,
   },
 });
-</script>
 
+// constants
+const env = Tools.getEnv();
+const pageCls = (() => {
+  if (env === 'weixin') {
+    return 'weixin-page';
+  }
+  return ''
+})();
+
+// methods
+const getDataSource = (key: TabKeyType) => {
+  api.test
+    .goldCoins<GD.BaseResponse<GD.ListItemProps[]>>({
+      page: state[key].page,
+      pageSize: 20,
+    })
+    .then((res) => {
+      if (res && res.code === 0) {
+        const { pageNo, pages } = res.page;
+        // 处理数据
+        if (state[key].type === 'refresh' || state[key].data === null) {
+          state[key].data = res.data;
+          state[key].isRefreshing = false;
+        } else {
+          state[key].data = [...state[key].data!, ...res.data];
+          state[key].isLoading = false;
+        }
+        state[key].isFinished = pageNo >= pages;
+      }
+    });
+};
+// watchEffects
+watchEffect(() => {
+  switch (state.active) {
+    case 0:
+      state['incomeTab'].data === null && getDataSource('incomeTab');
+      break;
+    case 1:
+      state['contributionTab'].data === null &&
+        getDataSource('contributionTab');
+      break;
+    case 2:
+      state['spendingTab'].data === null && getDataSource('spendingTab');
+      break;
+  }
+});
+// events
+const onRefresh = (key: TabKeyType) => {
+  state[key].page = 1;
+  state[key].type = 'refresh';
+  setTimeout(() => {
+    getDataSource(key);
+  }, 1000);
+};
+const onLoad = (key: TabKeyType) => {
+  state[key].page += 1;
+  state[key].type = 'load';
+  setTimeout(() => {
+    getDataSource(key);
+  }, 1000);
+};
+const { active, incomeTab, spendingTab, contributionTab } = toRefs(state);
+</script>
 
 <style lang="less" scoped>
 // 渐变层
@@ -237,41 +232,52 @@ export default defineComponent({
 // 内容
 .contents {
   width: calc(100% - 24px);
-  margin: -60px auto 0;
+  margin: -100px auto 0;
+  height: calc(100vh - 159px + 100px - 20px);
+  
   background-color: #fff;
-  // 容器高度 - 渐变成高度 - 向上位移高度 - 距离底部的间距（10px）
-  height: calc(100% - 159px + 60px - 10px);
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
 }
-.wrap {
-  // 容器高度 - 渐变成高度
-  height: calc(100vh - 159px);
-  margin-top: 1px;
-  overflow-y: scroll;
-}
-// 定制tabs样式
+
 :deep(.van-tabs) {
   .van-tabs__wrap {
+    height: 50px;
+    position: fixed;
+    top: 59px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    width: calc(100% - 24px);
+
     border-radius: 10px 10px 0 0;
     border-bottom: 1px solid #97979720;
-    .van-tab__text {
-      font-size: 15px;
-      color: #00000050;
-    }
-    .van-tab--active .van-tab__text {
-      color: #000000;
-    }
-    .van-tabs__line {
-      width: 61px;
-      height: 2px;
-      background-color: #4fb4ec;
-    }
+  }
+  .van-tab__text {
+    font-size: 15px;
+    color: #00000050;
+  }
+  .van-tab--active .van-tab__text {
+    color: #000000;
+  }
+  .van-tabs__line {
+    width: 61px;
+    height: 2px;
+    background-color: #4fb4ec;
+  }
+  .van-tabs__content {
+    margin-top: 50px;
   }
 }
 
-:deep(.van-pull-refresh) {
-  min-height: 200px;
-  padding-bottom: 30px;
+.weixin-page {
+  .contents {
+    margin: -139px auto 0;
+    // 容器高度 - 渐变层高度 + 往上移动的高度 - 距离底部的间距
+    height: calc(100vh - 159px + 139px - 20px);
+  }
+  :deep(.van-tabs__wrap) {
+    top: 20px;
+  }
 }
 </style>

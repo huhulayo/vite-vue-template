@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:24:50
- * @LastEditTime: 2021-11-27 00:37:04
+ * @LastEditTime: 2021-11-27 08:01:15
  * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\router\index.ts
  */
 
 import LibForWeixin from '@/utils/LibForWeixin';

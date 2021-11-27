@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "lg-big": "^1.0.3",
     "lg-bus": "^1.0.2",
     "lg-cookie": "^1.0.1",
     "lg-js-bridge": "^1.0.19",

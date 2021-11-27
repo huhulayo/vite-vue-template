@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-24 13:40:52
- * @LastEditTime: 2021-11-04 16:05:28
+ * @LastEditTime: 2021-11-27 08:51:48
  * @LastEditors: Lee
  * @Description:
  * @FilePath: \vite-vue-template__H5\src\api\test.ts
@@ -9,9 +9,7 @@
 
 import request from '../utils/request';
 
-export function GET<T>() {
-  return request.get<T>('/test/info');
-}
+
 
 // 首页 - 任务
 export function task<T>() {
@@ -22,27 +20,13 @@ export function task<T>() {
 export function goldCoins<T>(data: { page: number; pageSize: number }) {
   return request.post<T>('/test/goldCoins', data);
 }
-// 预估到账
-export function estimatedAccount<T>(data: { page: number; pageSize: number }) {
-  return request.post<T>('/test/estimatedAccount', data);
-}
 
-// 累计收入
-export function accumulatedIncome<T>(data: { page: number; pageSize: number }) {
-  return request.post<T>('/test/accumulatedIncome', data);
-}
-/**
- * @param data
- * @returns
- */
+// 记录
 export function records<T>(data: { page: number; pageSize: number }) {
   return request.post('/test/records', data);
 }
 
-/**
- * @param data
- * @returns
- */
+// 好友列表
 export function friends<T>(data: {
   page: number;
   pageSize: number;

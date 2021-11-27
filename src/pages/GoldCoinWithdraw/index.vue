@@ -2,17 +2,19 @@
  * @Author: Lee
  * @Date: 2021-11-03 11:42:53
  * @LastEditors: Lee
- * @LastEditTime: 2021-11-04 16:54:06
+ * @LastEditTime: 2021-11-27 09:53:53
 -->
 
 <template>
   <div class="page">
     <!-- 导航栏 -->
     <app-header
+      v-if="env !== 'weixin'"
       title="金币提现"
       rightButtonText="金币明细"
       @rightButtonTap="$router.push('/gold-coin-details')"
       :showBack="true"
+      :show-status-bar="false"
     />
     <!-- 内容 -->
     <div class="mt-14 bg-FFFFFF px-17 pt-16 pb-35">
@@ -20,6 +22,7 @@
       <div
         class="flex-h-start pb-21 border-bottom"
         style="border-color: #97979720"
+        @click="$router.push('/gold-coin-details')"
       >
         <img
           class="icon-60x60 flex-shrink mr-16"
@@ -103,9 +106,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs } from "vue";
-import AppHeader from "comps/@lgs/AppHeader/AppHeader.vue";
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue';
+import AppHeader from 'comps/@lgs/AppHeader/AppHeader.vue';
+import Tools from 'lg-tools';
+
 interface ConfigProps {
   desc: string;
   amounts: {
@@ -118,41 +123,35 @@ interface StateProps {
   selectedIndex: number;
   showDialog: boolean;
 }
-export default defineComponent({
-  components: {
-    AppHeader,
-  },
-  setup() {
-    // state
-    const state = reactive<StateProps>({
-      selectedIndex: 0,
-      showDialog: false,
-      config: {
-        amounts: [
-          { feeRate: 1, money: 0.01 },
-          { feeRate: 1, money: 5 },
-          { feeRate: 1, money: 20 },
-          { feeRate: 1, money: 50 },
-        ],
-        desc: `
+// state
+const state = reactive<StateProps>({
+  selectedIndex: 0,
+  showDialog: false,
+  config: {
+    amounts: [
+      { feeRate: 1, money: 0.01 },
+      { feeRate: 1, money: 5 },
+      { feeRate: 1, money: 20 },
+      { feeRate: 1, money: 50 },
+    ],
+    desc: `
         <div>1.10000金币可兑换1元</div>
         <div>2.每人每天只能提现一次</div>
         <div>3.提现将在3个工作日内审核到账，节假日不处理审批</div>
         `,
-      },
-    });
-    // events
-    const onSubmit = () => {
-      state.showDialog = true;
-    };
-    return {
-      ...toRefs(state),
-      onSubmit,
-    };
   },
 });
-</script>
 
+// constants
+const env = Tools.getEnv();
+
+// events
+const onSubmit = () => {
+  state.showDialog = true;
+};
+
+const { selectedIndex, showDialog, config } = toRefs(state);
+</script>
 
 <style lang="less" scoped>
 .pay-type-button {

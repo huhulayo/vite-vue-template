@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:20:41
- * @LastEditTime: 2021-11-27 00:09:18
+ * @LastEditTime: 2021-11-27 09:40:28
  * @LastEditors: Lee
  * @Description:
  */
@@ -49,7 +49,8 @@ app.config.globalProperties.$filters = filters;
 // 4. 自定义指令
 directives(app);
 
-// 5. 杂项配置
-Schemes.config('xxx://www.xxx.com');
+// 5. 杂项配置 - schemes
+Schemes.config('xxx://www.xxx.com', '二级目录');
+
 // 6. 挂载
 app.mount('#app');

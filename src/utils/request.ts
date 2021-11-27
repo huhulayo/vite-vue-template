@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-27 10:14:34
- * @LastEditTime: 2021-11-26 23:36:19
+ * @LastEditTime: 2021-11-27 10:33:42
  * @LastEditors: Lee
  * @Description:
  * @FilePath: \vite-vue-template__H5\src\utils\request.ts
@@ -30,7 +30,7 @@ service.interceptors.request.use(
       };
     }
     // => 配置请求头
-    const token = Cookie.get<string>('XXX_TOKEN');
+    const token = Cookie.get<string>('AUTHORIZATION_TOKEN');
     // => 确认平台（如果同时开发支付宝和微信公众号则需要传入来源/和后端配合商议对应平台的source值）(MP)
     let source = 'H5';
     switch (Tools.getEnv()) {

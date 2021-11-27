@@ -1,7 +1,7 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-07 23:13:57
- * @LastEditTime: 2021-11-27 00:13:35
+ * @LastEditTime: 2021-11-27 09:12:43
  * @LastEditors: Lee
  * @Description: 
  * @FilePath: /vue-mp-template/src/components/@lgs/TabBar/TabBar.vue
@@ -24,53 +24,58 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
-export default defineComponent({
-  setup() {
-    return {
-      paths: [
-        {
-          path: "/index-page",
-          text: "赚赚",
-          iconPath: new URL("./images/icon_1.png", import.meta.url).toString(),
-          selectedIconPath: new URL("./images/icon_1_sel.png", import.meta.url).toString(),
-        },
-        {
-          path: "/special-sale",
-          text: "特卖",
-          iconPath: new URL("./images/icon_2.png", import.meta.url).toString(),
-          selectedIconPath: new URL("./images/icon_2_sel.png", import.meta.url).toString(),
-        },
-        {
-          path: "/friends",
-          text: "好友",
-          iconPath: new URL("./images/icon_3.png", import.meta.url).toString(),
-          selectedIconPath: new URL("./images/icon_3_sel.png", import.meta.url).toString(),
-        },
-        {
-          path: "/mine",
-          text: "我的",
-          iconPath: new URL("./images/icon_4.png", import.meta.url).toString(),
-          selectedIconPath: new URL("./images/icon_4_sel.png", import.meta.url).toString(),
-        },
-      ],
-    };
+<script setup lang="ts">
+const paths = [
+  {
+    path: '/index-page',
+    text: '赚赚',
+    iconPath: new URL('./images/icon_1.png', import.meta.url).toString(),
+    selectedIconPath: new URL(
+      './images/icon_1_sel.png',
+      import.meta.url
+    ).toString(),
   },
-});
+  {
+    path: '/special-sale',
+    text: '特卖',
+    iconPath: new URL('./images/icon_2.png', import.meta.url).toString(),
+    selectedIconPath: new URL(
+      './images/icon_2_sel.png',
+      import.meta.url
+    ).toString(),
+  },
+  {
+    path: '/friends',
+    text: '好友',
+    iconPath: new URL('./images/icon_3.png', import.meta.url).toString(),
+    selectedIconPath: new URL(
+      './images/icon_3_sel.png',
+      import.meta.url
+    ).toString(),
+  },
+  {
+    path: '/mine',
+    text: '我的',
+    iconPath: new URL('./images/icon_4.png', import.meta.url).toString(),
+    selectedIconPath: new URL(
+      './images/icon_4_sel.png',
+      import.meta.url
+    ).toString(),
+  },
+];
 </script>
 
 <style lang="less" scoped>
 .tab-bar {
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-top: 1px solid #eeeeee;
 
-  height: calc(50PX + env(safe-area-inset-bottom));
+  height: calc(50px + env(safe-area-inset-bottom));
   display: flex;
-  
+
   position: fixed;
-  bottom:0;
+  bottom: 0;
   padding-bottom: env(safe-area-inset-bottom);
 }
 
@@ -81,9 +86,9 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #B5B5B5;
+  color: #b5b5b5;
   &.router-link-active {
-    color: #FF7A23;
+    color: #ff7a23;
   }
 }
 .icon {

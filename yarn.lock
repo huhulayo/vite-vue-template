@@ -1067,6 +1067,11 @@ less@^4.1.2:
     needle "^2.5.2"
     source-map "~0.6.0"
 
+lg-big@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/lg-big/-/lg-big-1.0.3.tgz#190ca12850dd8c61e1cd3395e2bfc120ff1125fd"
+  integrity sha512-Kbgr0t3wiRMDoWje4e0nJoJSW0bIy+YaQCB1zHoC7ybsyYsB7T9FeVh7y+hwdVjQuf3IidRbhRxmNsAzM32RPw==
+
 lg-bus@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/lg-bus/-/lg-bus-1.0.2.tgz#a8bfba2fc0a131334cbfbb63c9a88d065c05a91c"

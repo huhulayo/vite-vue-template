@@ -1,7 +1,7 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-26 22:43:41
- * @LastEditTime: 2021-11-27 00:00:17
+ * @LastEditTime: 2021-11-27 09:02:46
  * @LastEditors: Lee
  * @Description: 
  * @FilePath: \vite-vue-template__H5\src\App.vue
@@ -39,7 +39,7 @@ import Tools from 'lg-tools';
 import { ref, provide, onMounted } from 'vue';
 import Bus from 'lg-bus';
 import router from './router';
-import BindPhone from "./components/@lgs/BindPhone/BindPhone.vue";
+import BindPhone from "@/components/@lgs/BindPhone/BindPhone.vue";
 // ==> 正常逻辑
 // 获取当前环境
 const env = Tools.getEnv();
