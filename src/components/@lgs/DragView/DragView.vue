@@ -1,7 +1,7 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-06-04 19:22:28
- * @LastEditTime: 2021-11-27 17:08:52
+ * @LastEditTime: 2021-11-27 18:00:41
  * @LastEditors: Lee
  * @Description: 
 -->
@@ -121,6 +121,7 @@ onMounted(() => {
   if (left !== undefined && right !== undefined) {
     __pos.x = state.w - right - state.w;
   }
+
   // 更新拖拽元素位置
   state.pos = { ...__pos };
 
@@ -133,6 +134,6 @@ const { pos } = toRefs(state);
 <style lang="less" scoped>
 .lg-drag-view {
   position: fixed;
-  z-index: 1000;
+  z-index: 10000;
 }
 </style>

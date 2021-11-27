@@ -3,7 +3,7 @@
     <app-header v-if="env !== 'weixin'" title="好友" :show-status-bar="false" />
     <div class="coming-soon">Demo Example</div>
     <drag-view @tap="onTap">
-      <div class="box flex-h-center" >Drag</div>
+      <div class="box flex-h-center">Drag</div>
     </drag-view>
   </div>
 </template>
@@ -24,7 +24,7 @@ const onTap = () => {
 .box {
   width: 100px;
   height: 100px;
-  background: #00000050;
+  background: #999999;
   border-radius: 8px;
   font-size: 18px;
   color: #ffffff;
