@@ -1,34 +1,29 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-01-09 17:21:51
- * @LastEditTime: 2021-11-21 11:18:24
+ * @LastEditTime: 2021-11-27 16:05:14
  * @LastEditors: Lee
  * @Description: 
 -->
 <template>
-  <div class="no-data" :style="{paddingTop: top + 'px'}">
+  <div class="no-data" :style="{ paddingTop: top + 'px' }">
     <img src="./images/no-data__3.png" alt="" />
-    <p v-if="!!tips" class="tips">{{tips}}</p>
+    <p v-if="!!tips" class="tips">{{ tips }}</p>
   </div>
 </template>
 
+<script setup lang="ts">
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  props: {
-    tips: {
-      type: String,
-    },
-    top: {
-      type: Number,
-      default: 50
-    }
-  },
-});
+withDefaults(
+  defineProps<{
+    tips?: string;
+    top?: number;
+  }>(),
+  {
+    top: 50,
+  }
+);
 </script>
-
 
 <style scoped="scoped" lang="less">
 .no-data {

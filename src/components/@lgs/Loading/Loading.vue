@@ -1,8 +1,8 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-06-05 10:21:30
- * @LastEditTime: 2021-06-05 10:31:29
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-27 16:07:26
+ * @LastEditors: Lee
  * @Description: 
  * @FilePath: \多多汇宝\src\components\@lgs\Loading\index.vue
 -->
@@ -13,26 +13,24 @@
       <img class="lg-loading__logo" src="./images/logo.png" />
       <div class="lg-loading__border"></div>
     </div>
-    <div v-if="showTips" class="lg-loading__tips">{{tips}}</div>
+    <div v-if="showTips" class="lg-loading__tips">{{ tips }}</div>
   </div>
 </template>
 
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  props: {
-    tips: { type: String, default: "数据加载中..." },
-    showTips: { type: Boolean, default: true },
-    top: { type: Number, default: 100 },
-  },
-  setup() {
-    return {};
-  },
-});
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    tips?: string;
+    showTips?: boolean;
+    top?: number;
+  }>(),
+  {
+    tips: '数据加载中...',
+    showTips: true,
+    top: 100,
+  }
+);
 </script>
-
 
 <style lang="less" scoped>
 .lg-loading {
@@ -56,7 +54,7 @@ export default defineComponent({
     height: 100%;
     left: 0;
     top: 0;
-    background: url("./images/border.png") center center no-repeat;
+    background: url('./images/border.png') center center no-repeat;
     background-size: contain;
     -webkit-animation: rotate 1s linear infinite;
     animation: rotate 1s linear infinite;

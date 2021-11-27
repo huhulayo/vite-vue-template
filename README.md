@@ -31,7 +31,7 @@
 Vite-vue-template
 .
 ├── mock
-│	  └──	test.ts               # 数据mock，开发环境时可以模拟后端相应数据
+│	└──	test.ts               # 数据mock，开发环境时可以模拟后端相应数据
 ├── public                    # 该文件下的目录打包时将直接拷贝只根目录，我在里面放了自定义字体
 ├── src                       # 源码文件
 │   ├── api                   # 接口请求相关
@@ -47,7 +47,7 @@ Vite-vue-template
 │   ├── pages                 # 页面组件（下面只列举主要文件）
 │   │   ├── 404
 │   │   ├── Auth              # 微信授权页（MP）
-│   │   ├── ...								# 其他页面
+│   │   ├── ...				  # 其他页面
 │   │   └── Download          # 下载页模板（如果是混合开发， 可能需要写一个APP下载页）
 │   ├── router                # 路由配置文件
 │   ├── store                 # Vuex
@@ -59,7 +59,7 @@ Vite-vue-template
 │   │   └── request.ts        # 基于axios封装的请求类
 │   ├── App.vue
 │   ├── index.css             # 全局预定义样式/类bootstrap使用class定义样式
-│	  └──	main.ts               # 入口文件
+│	  └──	main.ts           # 入口文件
 ├── .env.dev                  # 开发环境配置文件       
 ├── .env.production           # 生产环境配置文件   
 ├── .env.test                 # 测试环境配置文件   
@@ -85,6 +85,8 @@ $ yarn build
 # 打包测试环境
 $ yarn test
 ```
+
+> 提示：由于模板 mock 数据，运行前，你需要在 `.env.dev` 文件中，将 `VITE_APP_HOST` 字段的 `ip` 地址替换成你本机的 `ip` 才能正常请求mock数据。
 
 # 特别说明
 
@@ -150,6 +152,10 @@ Schemes.config('xxx://www.xxx.com');
 ## 6. 关于Vconsole
 
 在这个版本中，默认注释 vconsole 引用，因为打包时会报出错误，等官方修复后会启用~
+
+## 7. 微信公众号
+
+如果你是开发微信公众号或者支付宝生活号，请到对应的环境变量配置文件中设置相应的 `AppID`。在开发环境，如果你有微信测试号，记得将回调域名在微信后台进行设置。
 
 # 后续计划
 

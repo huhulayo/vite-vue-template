@@ -1,7 +1,7 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:24:50
- * @LastEditTime: 2021-11-27 08:01:15
+ * @LastEditTime: 2021-11-27 17:00:49
  * @LastEditors: Lee
  * @Description:
  */
@@ -15,11 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/index-page',
   },
   {
-    path: "/auth/:type",
-    name: "Auth",
-    component: () => import("pages/Auth/index.vue"),
+    path: '/auth/:type',
+    name: 'Auth',
+    component: () => import('pages/Auth/index.vue'),
     meta: {
-      title: "",
+      title: '',
     },
   },
   {
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       title: '赚赚',
       isTabPage: true,
       isKeepAlive: true,
-      jsApiList: ["getLocation"],
+      jsApiList: ['getLocation'],
     },
   },
   {
@@ -139,21 +139,20 @@ router.beforeEach((to, from, next) => {
   if (to.meta.jsApiList) {
     LibForWeixin.initJSSDK(to.meta.jsApiList as string[])
       .then(() => {
-        console.log("config JS-SDK success");
+        console.log('config JS-SDK success');
         next();
       })
       .catch(() => {
-        console.log("config JS-SDK fail");
+        console.log('config JS-SDK fail');
         next();
       });
   } else {
     next();
   }
-
 });
 
 router.afterEach(() => {
   window.scrollTo(0, 0);
-})
+});
 
 export default router;

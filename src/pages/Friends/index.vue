@@ -1,24 +1,32 @@
-<!--
- * @Author: Lee
- * @Date: 2021-11-07 14:17:09
- * @LastEditors: Lee
- * @LastEditTime: 2021-11-26 22:05:19
--->
-
 <template>
   <div class="page">
-    <app-header v-if="env !== 'weixin'" title="我的" :show-status-bar="false" />
+    <app-header v-if="env !== 'weixin'" title="好友" :show-status-bar="false" />
     <div class="coming-soon">Demo Example</div>
+    <drag-view @tap="onTap">
+      <div class="box flex-h-center" >Drag</div>
+    </drag-view>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import AppHeader from '@/components/@lgs/AppHeader/AppHeader.vue';
 import Tools from 'lg-tools';
+import DragView from '@/components/@lgs/DragView/DragView.vue';
 
-const env = ref(Tools.getEnv());
+const env = Tools.getEnv();
 
+const onTap = () => {
+  console.log('点击拖拽视图...');
+};
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.box {
+  width: 100px;
+  height: 100px;
+  background: #00000050;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #ffffff;
+}
+</style>

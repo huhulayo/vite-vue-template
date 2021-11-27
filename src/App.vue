@@ -1,7 +1,7 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-26 22:43:41
- * @LastEditTime: 2021-11-27 09:02:46
+ * @LastEditTime: 2021-11-27 15:03:34
  * @LastEditors: Lee
  * @Description: 
  * @FilePath: \vite-vue-template__H5\src\App.vue
@@ -62,10 +62,10 @@ const onHideBindPhone = () => {
   Bus.$emit('BIND_PHONE_TO_INDEX');
   if (
     // 过滤路由/不跳转/当前页绑定
-    !/(callback$)|(integral$)|(mine$)|(set$)/.test(window.location.pathname) &&
+    !/(callback$)|(mine$)/.test(window.location.pathname) &&
     isTapCloseIcon.value &&
     !isBindedPhone.value
-  ) {
+  ) { 
     isTapCloseIcon.value = false;
     router.back();
   }
