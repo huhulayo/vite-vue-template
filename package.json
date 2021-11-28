@@ -24,13 +24,13 @@
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2",
-    "vuex-composition-helpers": "^1.0.23"
+    "vuex-composition-helpers": "^1.0.25"
   },
   "devDependencies": {
-    "@types/node": "^16.11.9",
-    "@vitejs/plugin-legacy": "^1.6.2",
-    "@vitejs/plugin-vue": "^1.9.4",
-    "@vue/compiler-sfc": "3.2.22",
+    "@types/node": "^16.11.10",
+    "@vitejs/plugin-legacy": "^1.6.3",
+    "@vitejs/plugin-vue": "^1.10.1",
+    "@vue/compiler-sfc": "3.2.23",
     "autoprefixer": "^10.4.0",
     "less": "^4.1.2",
     "postcss-pxtorem": "^6.0.0",
