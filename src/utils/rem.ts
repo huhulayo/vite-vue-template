@@ -1,8 +1,8 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:45:25
- * @LastEditTime: 2021-05-21 23:45:42
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 19:10:54
+ * @LastEditors: Lee
  * @Description:
  * @FilePath: /多多汇宝/src/utils/rem.ts
  */
@@ -19,6 +19,5 @@ function setRem() {
 setRem();
 // 改变窗口大小时重新设置 rem
 window.onresize = function () {
-  console.log("我执行了");
   setRem();
 };
