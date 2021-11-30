@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-07 23:13:57
- * @LastEditTime: 2021-11-27 14:27:33
+ * @LastEditTime: 2021-11-30 20:22:30
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: /vue-mp-template/src/components/@lgs/TabBar/TabBar.vue
   
 -->
 <template>

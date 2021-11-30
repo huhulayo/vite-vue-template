@@ -4,7 +4,6 @@
  * @LastEditTime: 2021-06-10 13:09:21
  * @LastEditors: Li-HONGYAO
  * @Description: In User Settings Edit
- * @FilePath: \多多汇宝\src\pages\Friends\FriendsItem.vue
 -->
 
 <template>

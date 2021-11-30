@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-26 22:51:19
- * @LastEditTime: 2021-11-26 23:38:07
+ * @LastEditTime: 2021-11-30 20:22:51
  * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\typings\index.d.ts
  */
 
 import { AxiosRequestConfig } from "axios";

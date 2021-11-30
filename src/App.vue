@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-26 22:43:41
- * @LastEditTime: 2021-11-27 15:03:34
+ * @LastEditTime: 2021-11-30 20:22:17
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: \vite-vue-template__H5\src\App.vue
 -->
 <template>
   <!-- 环境判断 -->

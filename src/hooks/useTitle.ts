@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-08 21:31:00
- * @LastEditTime: 2021-06-01 18:07:23
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:22:36
+ * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\hooks\useTitle.ts
  */
 export default function (title: string) {
   // 兼容微信环境

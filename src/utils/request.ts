@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-27 10:14:34
- * @LastEditTime: 2021-11-27 10:33:42
+ * @LastEditTime: 2021-11-30 20:22:57
  * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\utils\request.ts
  */
 import router from '@/router';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';

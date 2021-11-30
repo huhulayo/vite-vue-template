@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:44:41
- * @LastEditTime: 2021-05-21 23:44:48
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:22:14
+ * @LastEditors: Lee
  * @Description:
- * @FilePath: /多多汇宝/postcss.config.js
  */
 module.exports = {
   plugins: {

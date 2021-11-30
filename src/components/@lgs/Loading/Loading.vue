@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-06-05 10:21:30
- * @LastEditTime: 2021-11-27 16:07:26
+ * @LastEditTime: 2021-11-30 20:21:41
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: \多多汇宝\src\components\@lgs\Loading\index.vue
 -->
 
 <template>

@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:26:16
- * @LastEditTime: 2021-11-26 21:56:49
+ * @LastEditTime: 2021-11-30 20:22:45
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: \vite-vue-template__H5\src\pages\IndexPage\index.vue
 -->
 <!-- 模板文件 -->
 <template>

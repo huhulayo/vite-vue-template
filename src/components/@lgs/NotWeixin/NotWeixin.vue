@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-01-09 17:21:51
- * @LastEditTime: 2021-08-11 11:38:21
+ * @LastEditTime: 2021-11-30 20:22:23
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: /vue-mp-template/src/components/@lgs/NotWeixin/NotWeixin.vue
 -->
 
 <template>

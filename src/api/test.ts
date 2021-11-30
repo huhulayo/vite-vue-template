@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-24 13:40:52
- * @LastEditTime: 2021-11-27 08:51:48
+ * @LastEditTime: 2021-11-30 20:21:15
  * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\api\test.ts
  */
 
 import request from '../utils/request';

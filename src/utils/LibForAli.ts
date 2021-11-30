@@ -2,7 +2,8 @@
  * @Author: Lee
  * @Date: 2021-08-20 12:33:26
  * @LastEditors: Lee
- * @LastEditTime: 2021-11-26 23:38:56
+ * @LastEditTime: 2021-11-30 20:47:26
+ * @Description: 支付宝Api
  */
 export interface AlipayLocationProps {
   longitude: string;

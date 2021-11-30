@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:39:56
- * @LastEditTime: 2021-05-22 00:10:33
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:22:48
+ * @LastEditors: Lee
  * @Description:
- * @FilePath: /多多汇宝/src/store/index.ts
  */
 import { InjectionKey } from "vue";
 import {

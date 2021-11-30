@@ -2,7 +2,7 @@
  * @Author: Lee
  * @Date: 2021-11-03 11:42:53
  * @LastEditors: Lee
- * @LastEditTime: 2021-11-27 09:53:53
+ * @LastEditTime: 2021-11-30 20:43:22
 -->
 
 <template>
@@ -21,7 +21,7 @@
       <!-- 金币余额 -->
       <div
         class="flex-h-start pb-21 border-bottom"
-        style="border-color: #97979720"
+        style="border-color: #eeeeee"
         @click="$router.push('/gold-coin-details')"
       >
         <img
@@ -47,11 +47,11 @@
             <span class="flex-1">支付宝</span>
             <img class="icon-12x12" src="../../assets/icon_checked.png" />
           </div>
-          <!-- <div class="pay-type-button px-16 flex-h-start">
+          <div class="pay-type-button px-16 flex-h-start">
             <img class="icon-weixin mr-10" src="../../assets/icon_weixin.png" />
             <span class="flex-1">微信钱包</span>
             <img class="icon-12x12" src="../../assets/icon_checked.png" />
-          </div> -->
+          </div>
         </div>
         <div class="mt-19 flex-h-between">
           <div class="f14 lh-20">
@@ -84,24 +84,6 @@
       <!-- 提现说明 -->
       <div class="f14 lh-20 mb-13">提现方式</div>
       <div v-html="config.desc" class="f11 lh-16" style="color: #9e9e9e"></div>
-      <!-- 提现说明 -->
-      <van-dialog
-        v-model:show="showDialog"
-        confirm-button-color="#FF5E33"
-        title="提现"
-        :showCancelButton="true"
-      >
-        <div class="text-center pt-10 pb-20" style="color: #303030">
-          <div class="f-600 ff-DIN-Bold f26">50元</div>
-          <div class="f14 mt-12">确认提现到支付宝</div>
-          <div class="f14 mt-6 ls-1" style="color: #74a2ff">
-            李鸿耀 / 17398888669
-          </div>
-          <div class="f12 mt-10" style="color: #8a8a8a">
-            （本次提现扣除手续费2元）
-          </div>
-        </div>
-      </van-dialog>
     </div>
   </div>
 </template>
@@ -150,7 +132,7 @@ const onSubmit = () => {
   state.showDialog = true;
 };
 
-const { selectedIndex, showDialog, config } = toRefs(state);
+const { selectedIndex, config } = toRefs(state);
 </script>
 
 <style lang="less" scoped>

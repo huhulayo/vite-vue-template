@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-08 20:50:30
- * @LastEditTime: 2021-06-01 18:07:13
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:21:11
+ * @LastEditors: Lee
  * @Description:
- * @FilePath: \vite-vue-template__H5\src\api\index.ts
  */
 
 import * as test from "./test";

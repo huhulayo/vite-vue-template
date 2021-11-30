@@ -2,13 +2,9 @@
  * @Author: Li-HONGYAO
  * @Date: 2021-06-18 15:07:28
  * @LastEditors: Lee
- * @LastEditTime: 2021-11-26 23:59:11
+ * @LastEditTime: 2021-11-30 20:53:04
  * @Description: 
 -->
-
-<template>
-  <div class="page"></div>
-</template>
 
 <script setup lang="ts">
 import {  onMounted, onUnmounted } from 'vue';
@@ -80,3 +76,8 @@ onUnmounted(() => {
   Bus.$off('BIND_PHONE_TO_INDEX');
 });
 </script>
+
+
+<template>
+  <div class="page"></div>
+</template>

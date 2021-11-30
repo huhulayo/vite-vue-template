@@ -1,10 +1,9 @@
 /*
  * @Author: your name
  * @Date: 2021-06-07 17:24:12
- * @LastEditTime: 2021-06-17 14:32:28
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:21:47
+ * @LastEditors: Lee
  * @Description: In User Settings Edit
- * @FilePath: \多多汇宝\src\filters\index.ts
  */
 
 export interface FiltersProps {

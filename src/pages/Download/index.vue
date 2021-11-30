@@ -1,15 +1,58 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-06-01 20:00:49
- * @LastEditTime: 2021-06-03 10:28:56
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 21:29:55
+ * @LastEditors: Lee
  * @Description: 
- * @FilePath: \vite-vue-template__H5\src\pages\Download\index.vue
 -->
+
+<script setup lang="ts">
+import Tools from 'lg-tools';
+import { reactive, toRefs } from 'vue';
+
+interface StateProps {
+  platform: 'ios' | 'android' | 'weixin' | 'alipay' | 'unknown';
+  ani: string;
+}
+
+const state = reactive<StateProps>({
+  platform: Tools.getEnv(),
+  ani: '',
+});
+
+// events
+const onDownload = () => {
+  switch (state.platform) {
+    case 'ios':
+      window.location.href = 'Download url for iOS.';
+      break;
+    case 'android':
+      window.location.href = 'Download url for Android.';
+      break;
+    case 'weixin':
+      state.ani = 'ani';
+      setTimeout(() => {
+        state.ani = '';
+      }, 1000);
+      break;
+    case 'unknown':
+      break;
+  }
+};
+// ==> events
+const onOpenApp = () => {
+  window.location.href = "APP's Scheme Address.";
+};
+
+const { platform, ani } = toRefs(state);
+
+</script>
 
 <template>
   <div class="page">
-    <!-- 内容区域 -->
+    <!-- 底图 -->
+    <img src="./images/bg.png" />
+    <!-- 内容区域 -- 定位 -->
     <div class="wrap">
       <img src="./images/icon_logo.png" class="icon-70x70" />
       <div class="platform">
@@ -25,11 +68,13 @@
         />
         <span class="app-name">多多汇宝</span>
       </div>
-      <div class="download-button" @click="onDownload">即将开放</div>
-      <!-- <div v-if="platform !== 'weixin'" class="open-tips" @click="onOpenApp">
+      <div class="download-button" @click="onDownload">点击安装</div>
+      <div v-if="platform !== 'weixin'" class="open-tips" @click="onOpenApp">
         已安装?立即打开
-      </div> -->
+      </div>
     </div>
+    <!-- 空白符：如果背景图片没有撑起页面高度，则需要占位容器，占位容器背景和背景图最底部的色值保持一致 -->
+    <div class="space flex-1" style="background: rgba(244, 197, 60)"></div>
     <!-- 微信环境文案提示 -->
     <img
       :class="`tips ${platform === 'weixin' ? 'show' : ''} ${ani}`"
@@ -38,60 +83,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import Tools from "lg-tools";
-import { defineComponent, reactive, toRefs } from "vue";
-
-interface StateProps {
-  platform: "ios" | "android" | "weixin" | "unknown";
-  ani: string;
+<style lang="less" scoped>
+@keyframes debounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px);
+  }
 }
 
-export default defineComponent({
-  setup() {
-    const state = reactive<StateProps>({
-      // @ts-ignore
-      platform: Tools.getEnv(),
-      ani: "",
-    });
-
-    // events
-    const onDownload = () => {
-      switch (state.platform) {
-        case "ios":
-          break;
-        case "android":
-          break;
-        case "weixin":
-          state.ani = "ani";
-          setTimeout(() => {
-            state.ani = "";
-          }, 1000);
-          break;
-        case "unknown":
-          break;
-      }
-    };
-    const onOpenApp = () => {
-      return;
-      window.location.href = "ddou://www.d-dou.com/";
-    };
-
-    return {
-      ...toRefs(state),
-      onDownload,
-      onOpenApp,
-    };
-  },
-});
-</script>
-
-<style lang="less" scoped>
 .page {
-  background: #fdc401 url("./images/bg.png") no-repeat top left;
-  background-size: contain;
-  padding-top: 434px;
+  position: relative;
   .wrap {
+    position: absolute;
+    top: 350px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,4 +167,3 @@ export default defineComponent({
   }
 }
 </style>
-

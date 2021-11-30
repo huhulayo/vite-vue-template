@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-03-25 22:55:35
- * @LastEditTime: 2021-03-30 22:27:19
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:22:27
+ * @LastEditors: Lee
  * @Description: 
- * @FilePath: /Technician/src/components/@lgs/DatePicker/DatePicker.vue
 -->
 <template>
   <div class="lg-picker-res" @click="visible = true">

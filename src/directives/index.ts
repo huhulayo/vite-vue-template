@@ -1,10 +1,9 @@
 /*
  * @Author: your name
  * @Date: 2021-06-07 16:31:16
- * @LastEditTime: 2021-06-07 17:21:29
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-30 20:21:35
+ * @LastEditors: Lee
  * @Description: In User Settings Edit
- * @FilePath: \多多汇宝\src\directives\index.ts
  */
 
 import { App } from "vue";

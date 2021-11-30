@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-24 15:14:38
- * @LastEditTime: 2021-11-26 23:25:30
+ * @LastEditTime: 2021-11-30 20:22:10
  * @LastEditors: Lee
  * @Description: 环境变量智能提示
- * @FilePath: \vite-vue-template__H5\env.d.ts
  */
 interface ImportMetaEnv {
   VITE_APP_HOST: string;

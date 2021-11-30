@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-03-08 21:33:30
- * @LastEditTime: 2021-06-29 22:17:22
- * @LastEditors: Li-HONGYAO
+ * @LastEditTime: 2021-11-30 20:22:33
+ * @LastEditors: Lee
  * @Description:
- * @FilePath: /vue-mp-template/src/hooks/index.ts
  */
 
 import useTitle from "./useTitle";

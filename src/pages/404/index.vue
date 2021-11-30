@@ -1,10 +1,9 @@
 <!--
  * @Author: Li-HONGYAO
  * @Date: 2021-06-03 10:29:54
- * @LastEditTime: 2021-11-03 22:08:28
+ * @LastEditTime: 2021-11-30 20:53:26
  * @LastEditors: Lee
  * @Description: 
- * @FilePath: \vite-vue-template__H5\src\pages\404\index.vue
 -->
 
 <template>
@@ -18,14 +17,6 @@
     <div class="not-found__btn" @click="$router.push('/')">返回首页</div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  setup() {},
-});
-</script>
 
 
 <style lang="less" scoped>

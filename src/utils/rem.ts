@@ -1,10 +1,9 @@
 /*
  * @Author: Li-HONGYAO
  * @Date: 2021-05-21 23:45:25
- * @LastEditTime: 2021-11-30 19:10:54
+ * @LastEditTime: 2021-11-30 20:22:54
  * @LastEditors: Lee
  * @Description:
- * @FilePath: /多多汇宝/src/utils/rem.ts
  */
 // rem等比适配配置文件
 // 基准大小，注意此值要与 postcss.config.js 文件中的 rootValue保持一致
